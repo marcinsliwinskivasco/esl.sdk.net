@@ -52,7 +52,6 @@ namespace SDK.Examples
                               .MakeOptional()))
                     .Build();
 
-            eslClient.
             packageId = eslClient.CreatePackage(superDuperPackage);
             eslClient.SendPackage(packageId);
             sentPackage = eslClient.GetPackage(packageId);
