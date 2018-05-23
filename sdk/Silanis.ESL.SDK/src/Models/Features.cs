@@ -103,7 +103,11 @@ namespace Silanis.ESL.API
                 get; set;
         }
     
-		
-	
-	}
+    [JsonProperty("optionalSignature")]
+    public Nullable<Boolean> OptionalSignature
+    {
+        get; set;
+    }
+
+    }
 }

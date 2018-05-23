@@ -24,6 +24,7 @@ namespace Silanis.ESL.SDK.Builder
         private TextAnchor textAnchor;
         private GroupId groupId;
         private Placeholder roleId;
+        private bool optional = false;
 
 		private SignatureBuilder (string signerEmail)
 		{
@@ -204,6 +205,11 @@ namespace Silanis.ESL.SDK.Builder
             return this;
         }
 
+        public SignatureBuilder MakeOptional() {
+            this.optional = true;
+            return this;
+        }
+
 		public Signature Build()
         {
             Signature signature;
@@ -228,6 +234,7 @@ namespace Silanis.ESL.SDK.Builder
 			signature.Name = name;
 			signature.Extract = extract;
             signature.TextAnchor = textAnchor;
+            signature.Optional = optional;
 
 			return signature;
 		}
