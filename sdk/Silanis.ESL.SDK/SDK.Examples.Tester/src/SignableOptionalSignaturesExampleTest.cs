@@ -19,7 +19,7 @@ namespace SDK.Examples
             Assert.AreEqual(2, example.signer2SignableSignatures.Count);
             Assert.AreEqual(example.email2, example.signer2SignableSignatures[0].SignerEmail);
             Assert.AreEqual(example.email2, example.signer2SignableSignatures[1].SignerEmail);
-            Assert.AreEqual(true, example.signer2SignableSignatures[1].Optional);
+            Assert.IsTrue(example.signer2SignableSignatures[1].Optional);
         }
     }
 }

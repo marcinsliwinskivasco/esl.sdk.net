@@ -13,8 +13,6 @@ namespace SDK.Examples
             new SignableOptionalSignaturesExample().Run();
         }
 
-        public DocumentPackage sentPackage;
-
         private string signer1Id = "signer1Id";
         private string signer2Id = "signer2Id";
         private string documentId = "documentId";
@@ -25,7 +23,6 @@ namespace SDK.Examples
         override public void Execute()
         {
             DocumentPackage superDuperPackage = PackageBuilder.NewPackageNamed(PackageName)
-                .WithSettings(DocumentPackageSettingsBuilder.NewDocumentPackageSettings().WithInPerson())
                     .WithSigner(SignerBuilder.NewSignerWithEmail(email1)
                         .WithFirstName("John1")
                         .WithLastName("Smith1")
@@ -54,10 +51,10 @@ namespace SDK.Examples
 
             packageId = eslClient.CreatePackage(superDuperPackage);
             eslClient.SendPackage(packageId);
-            sentPackage = eslClient.GetPackage(packageId);
+            retrievedPackage = eslClient.GetPackage(packageId);
 
-            signer1SignableSignatures = eslClient.ApprovalService.GetAllSignableSignatures(sentPackage, documentId, signer1Id);
-            signer2SignableSignatures = eslClient.ApprovalService.GetAllSignableSignatures(sentPackage, documentId, signer2Id);
+            signer1SignableSignatures = eslClient.ApprovalService.GetAllSignableSignatures(retrievedPackage, documentId, signer1Id);
+            signer2SignableSignatures = eslClient.ApprovalService.GetAllSignableSignatures(retrievedPackage, documentId, signer2Id);
         }
     }
 }
